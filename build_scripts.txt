@@ -1,0 +1,14 @@
+
+docker run --rm -p 3838:3838 mdancho/shinyauth:latest
+
+docker build . -t mdancho/shinyauth:latest
+
+docker tag mdancho/shinyauth:latest mdancho/shinyauth:version1.0
+
+docker push mdancho/shinyauth:version1.0
+docker push mdancho/shinyauth:latest
+
+docker run -it rocker/shiny-verse:latest /bin/bash
+docker run -it mdancho/shinyauth:latest /bin/bash
+
+R -e "packageVersion('shiny')"

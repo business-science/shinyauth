@@ -1,3 +1,6 @@
+# VERSION 1.0
+# Shiny Version: 1.7.1
+
 FROM rocker/shiny-verse:latest
 
 RUN apt-get update -qq \
@@ -12,7 +15,7 @@ RUN apt-get update -qq \
         libhdf4-alt-dev \
         libhdf5-dev \
         libjq-dev \
-        liblwgeom-dev \
+        # liblwgeom-dev \ # No longer needed 
         libpq-dev \
         libproj-dev \
         libprotobuf-dev \
@@ -29,7 +32,22 @@ RUN apt-get update -qq \
         libsasl2-dev \
         libv8-dev \
         libsodium-dev \
-    && install2.r --error --deps TRUE \
+            
+        # textshaping dependencies - HarfBuzz
+        libharfbuzz-dev \
+        libfribidi-dev \
+        gcc \
+        g++ \
+        libfreetype6-dev \ 
+        libglib2.0-dev \
+        libcairo2-dev \
+        meson \
+        pkg-config \
+        gtk-doc-tools \
+    # Installs from MRAN (Microsoft), packages tend to be older so must specify cran rstudio mirror
+    && install2.r --error --deps TRUE -r http://cran.rstudio.com \
+        shiny \
+        bslib \
         shinyWidgets \
         shinythemes \
         shinyjs \
@@ -39,5 +57,7 @@ RUN apt-get update -qq \
         remotes \
         tidyquant \
         plotly \
+    # Installs from GitHub 
     && installGithub.r business-science/shinyauthr
+    
         
