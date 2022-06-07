@@ -15,7 +15,6 @@ RUN apt-get update -qq \
         libhdf4-alt-dev \
         libhdf5-dev \
         libjq-dev \
-        # liblwgeom-dev \ # No longer needed 
         libpq-dev \
         libproj-dev \
         libprotobuf-dev \
@@ -32,8 +31,6 @@ RUN apt-get update -qq \
         libsasl2-dev \
         libv8-dev \
         libsodium-dev \
-            
-        # textshaping dependencies - HarfBuzz
         libharfbuzz-dev \
         libfribidi-dev \
         gcc \
@@ -44,7 +41,6 @@ RUN apt-get update -qq \
         meson \
         pkg-config \
         gtk-doc-tools \
-    # Installs from MRAN (Microsoft), packages tend to be older so must specify cran rstudio mirror
     && install2.r --error --deps TRUE -r http://cran.rstudio.com \
         shiny \
         bslib \
@@ -57,7 +53,7 @@ RUN apt-get update -qq \
         remotes \
         tidyquant \
         plotly \
-    # Installs from GitHub 
     && installGithub.r business-science/shinyauthr
+    
     
         

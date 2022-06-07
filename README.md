@@ -12,3 +12,17 @@ The Dockerfile for the shinyauth R environment used in the [Shiny Developer with
 - tidyquant
 - plotly
 - shinyauthr
+
+# Docker Image Version History
+
+## Version 2.0 
+
+- Updates `quantmod` to fix error accessing Yahoo! Finance data
+
+## Version 1.0 
+
+- Updated to `shiny 1.7.1`
+
+## Version 0.0
+
+- Original Course Version
