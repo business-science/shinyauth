@@ -1,5 +1,5 @@
 # VERSION 3.0
-# Shiny Version: 1.7.1
+# Shiny Version: 1.7.4.1
 
 FROM rocker/shiny-verse:latest
 

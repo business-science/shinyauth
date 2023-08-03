@@ -9,12 +9,19 @@ docker run --rm -p 3838:3838 mdancho/shinyauth:latest
 # Build shinyauth image from scratch (takes a while):
 docker build . -t mdancho/shinyauth:latest --no-cache
 
+# Tag the latest version:
 docker tag mdancho/shinyauth:latest mdancho/shinyauth:version3.0
 
-docker push mdancho/shinyauth:version2.0
+# Push to Docker Hub:
+docker push mdancho/shinyauth:version3.0
 docker push mdancho/shinyauth:latest
 
-docker run -it rocker/shiny-verse:latest /bin/bash
+# Run the image:
 docker run -it mdancho/shinyauth:latest /bin/bash
 
+# Test the image:
 R -e "packageVersion('shiny')"
+R -e "tidyquant::tq_get('AAPL')"
+
+# Exit the image:
+exit
