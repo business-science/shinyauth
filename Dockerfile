@@ -1,10 +1,39 @@
-# VERSION 1.0
+# VERSION 3.0
 # Shiny Version: 1.7.1
 
 FROM rocker/shiny-verse:latest
 
-RUN apt-get update -qq \
-    && apt-get -y --no-install-recommends install \
+# Update new packages
+RUN apt-get update -qq 
+
+# Get cargo
+RUN apt-get install cargo -y
+
+# Install R package dependencies
+RUN apt-get -y --no-install-recommends install \
+        libtesseract-dev \
+        libleptonica-dev \
+        tesseract-ocr \
+        tesseract-ocr-eng \
+        libpoppler-cpp-dev \
+        poppler-data \
+        libmagick++-dev \
+        libxml2 \
+        libcurl4-openssl-dev \
+        libxml2-dev \
+        git-core \
+        libssl-dev \
+        libgtk2.0-dev \
+        libcairo2-dev \
+        libxt-dev \
+        xvfb \
+        xauth \
+        libfftw3-dev \
+        libx11-dev \
+        libtiff-dev \
+        xfonts-base \
+        libavfilter-dev \
+        librsvg2-dev \
         lbzip2 \
         libfftw3-dev \
         libgdal-dev \
@@ -40,8 +69,19 @@ RUN apt-get update -qq \
         libcairo2-dev \
         meson \
         pkg-config \
-        gtk-doc-tools \
-    && install2.r --error --deps TRUE -r http://cran.rstudio.com \
+        gtk-doc-tools 
+
+# Install R packages
+RUN install2.r --error --deps TRUE -r http://cran.rstudio.com \
+        gifski 
+
+RUN install2.r --error --deps TRUE -r http://cran.rstudio.com \
+        tesseract \
+        av \
+        # gifski \
+        pdftools \
+        magick \
+        rsvg \
         shiny \
         bslib \
         shinyWidgets \
@@ -52,8 +92,10 @@ RUN apt-get update -qq \
         config \
         remotes \
         tidyquant \
-        plotly \
-    && installGithub.r business-science/shinyauthr
+        plotly 
+
+RUN installGithub.r \
+    business-science/shinyauthr
     
     
         
