@@ -73,12 +73,9 @@ RUN apt-get -y --no-install-recommends install \
 
 # Install R packages
 RUN install2.r --error --deps TRUE -r http://cran.rstudio.com \
-        gifski 
-
-RUN install2.r --error --deps TRUE -r http://cran.rstudio.com \
         tesseract \
         av \
-        # gifski \
+        gifski \
         pdftools \
         magick \
         rsvg \
