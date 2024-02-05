@@ -13,6 +13,12 @@ The Dockerfile for the shinyauth R environment used in the [Shiny Developer with
 - plotly
 - shinyauthr
 
+# Installation
+
+``` r
+remotes::install_github("https://github.com/business-science/shinyauth")
+```
+
 # Docker Image Version History
 
 ## Version 2.0 
